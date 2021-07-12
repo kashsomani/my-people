@@ -2,17 +2,17 @@
   import {
     onMount
   } from "svelte";
-  let date
-  onMount(async () => {
-    const res = await fetch("/api/date");
-    const db = await fetch("/api/firebase");
-    const newDate = await res.text();
-    const snapshot = await db.collection('users').get();
-    snapshot.forEach((doc) => {
-      console.log(doc.id, '=>', doc.data());
-    });
-    date = newDate;
-  });
+  import {
+    db
+  } from './firebase';
+    $: people = {};
+  onMount(async ()=>{
+    let uid = "Zr82sLpVm2KcNf5lsVCk";
+    const peopleRef = db.collection('people').doc('Zr82sLpVm2KcNf5lsVCk');
+    const doc = await peopleRef.get();
+    people = doc.data();
+    console.log(people)
+  })
 </script>
 
 <main>
@@ -43,9 +43,7 @@
       <code>api/date</code>
       for the Date API with Node.js
     </a>
-    .
-  </p>
-  <br />
+    <br />
   <h2>The date according to Node.js is:</h2>
-  <p>{date ? date : 'Loading date...'}</p>
+  <p>{people? people.name : "loading"}</p>
 </main>
