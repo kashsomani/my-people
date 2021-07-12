@@ -5,12 +5,12 @@
   import {
     db
   } from './firebase';
-    $: people = {};
+    $: people = [];
   onMount(async ()=>{
     let uid = "Zr82sLpVm2KcNf5lsVCk";
     const peopleRef = db.collection('people').doc('Zr82sLpVm2KcNf5lsVCk');
     const doc = await peopleRef.get();
-    people = doc.data();
+    people = Object.entries(doc.data());
     console.log(people)
   })
 </script>
@@ -45,5 +45,11 @@
     </a>
     <br />
   <h2>The date according to Node.js is:</h2>
-  <p>{people.name? people.name : "loading"}</p>
+  {#if !people}
+    <p>loading</p>
+  {:else}
+    {#each people as person}
+      <p>{person[0]}: {person[1]}</p>
+    {/each}
+  {/if}
 </main>
