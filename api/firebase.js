@@ -33,20 +33,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 
 module.exports = (req, res) => {
-  const docRef = db.collection('users').doc('alovelace');
+  const docRef = db.collection('people').doc('Zr82sLpVm2KcNf5lsVCk');
 
-  await docRef.set({
-    first: 'Ada',
-    last: 'Lovelace',
-    born: 1815
-  });
-  const aTuringRef = db.collection('users').doc('aturing');
-
-  await aTuringRef.set({
-    'first': 'Alan',
-    'middle': 'Mathison',
-    'last': 'Turing',
-    'born': 1912
-  });
   res.status(200).send(db);
 };
