@@ -4,7 +4,7 @@
 
   onMount(async () => {
     const res = await fetch("/api/date");
-    const res2= await fetch("/api/firebase");
+    const db= await fetch("/api/firebase");
     const newDate = await res.text();
     const snapshot = await db.collection('users').get();
 snapshot.forEach((doc) => {
