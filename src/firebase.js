@@ -15,7 +15,9 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-console.log(firebase)
 
-
+export async function getPeople() {
+  const snapshot = await firebase.firestore().collection('people').get()
+  return snapshot.docs.map(doc => Object.entries(doc.data()));
+}
 export const db = firebase.firestore();

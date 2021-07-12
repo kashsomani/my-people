@@ -3,15 +3,14 @@
     onMount
   } from "svelte";
   import {
-    db
+    db,
+    getPeople
   } from './firebase';
-    $: people = [];
-  onMount(async ()=>{
-    let uid = "Zr82sLpVm2KcNf5lsVCk";
-    const peopleRef = db.collection('people').doc('Zr82sLpVm2KcNf5lsVCk');
-    const doc = await peopleRef.get();
-    people = Object.entries(doc.data());
-    console.log(people)
+  $: people = [];
+  $: people2 = [];
+  onMount(async () => {
+    people2 = await getPeople();
+    console.log(people2)
   })
 </script>
 
@@ -45,11 +44,16 @@
     </a>
     <br />
   <h2>The date according to Node.js is:</h2>
-  {#if !people}
+
+  {#if !people2}
     <p>loading</p>
   {:else}
-    {#each people as person}
-      <p>{person[0]}: {person[1]}</p>
+    {#each people2 as person}
+    <div >
+      {#each person as attr}
+        <p>{attr}</p>
+      {/each}
+    </div>
     {/each}
   {/if}
 </main>
