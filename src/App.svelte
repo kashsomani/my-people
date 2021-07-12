@@ -45,5 +45,5 @@
     </a>
     <br />
   <h2>The date according to Node.js is:</h2>
-  <p>{people? people.name : "loading"}</p>
+  <p>{people.name? people.name : "loading"}</p>
 </main>
