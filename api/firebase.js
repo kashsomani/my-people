@@ -22,6 +22,7 @@ const firebaseConfig = {
   measurementId: "G-FRMJJVC9ZN"
 };
 const serviceAccount = require('./key.json');
+const admin = require('firebase-admin');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -29,6 +30,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 const firebaseApp = initializeApp(firebaseConfig);
+
+
 module.exports = (req, res) => {
   const docRef = db.collection('users').doc('alovelace');
 

@@ -1,15 +1,17 @@
 <script>
-  import { onMount } from "svelte";
+  import {
+    onMount
+  } from "svelte";
   export let date;
 
   onMount(async () => {
     const res = await fetch("/api/date");
-    const db= await fetch("/api/firebase");
+    const db = await fetch("/api/firebase");
     const newDate = await res.text();
     const snapshot = await db.collection('users').get();
-snapshot.forEach((doc) => {
-  console.log(doc.id, '=>', doc.data());
-});
+    snapshot.forEach((doc) => {
+      console.log(doc.id, '=>', doc.data());
+    });
     date = newDate;
   });
 </script>
@@ -24,10 +26,7 @@ snapshot.forEach((doc) => {
     !
   </h2>
   <p>
-    <a
-      href="https://github.com/vercel/vercel/tree/main/examples/svelte"
-      target="_blank"
-      rel="noreferrer noopener">
+    <a href="https://github.com/vercel/vercel/tree/main/examples/svelte" target="_blank" rel="noreferrer noopener">
       This project
     </a>
     is a
