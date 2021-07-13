@@ -24,7 +24,7 @@
     {#each people2 as person}
     <div >
       {#each person as attr}
-        <p>{attr}</p>
+        <p>{`${attr[0]}: ${attr[1]}`}</p>
       {/each}
     </div>
     {/each}
