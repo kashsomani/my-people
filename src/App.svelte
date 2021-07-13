@@ -3,35 +3,28 @@
     onMount
   } from "svelte";
   import {
-    db,
-    getPeople,
-    addPerson
+    getPeople
   } from './firebase';
-  const example ={name:"hi", age:903}
-  $: people = [];
+  import {
+    people_store
+  } from './store'
+  import Router from 'svelte-spa-router'
+  import routes from './router'
   onMount(async () => {
-    people = await getPeople();
-    console.log(people)
+    people_store.set(await getPeople());
   })
-  async function addP(person){
-    await addPerson(person)
-  }
 </script>
-
 <main>
-  <h1>MY PEEPS</h1>
-
-
-  {#if !people}
-    <p>loading</p>
-  {:else}
-    {#each people as person}
-    <div >
-      {#each person as attr}
-        <p>{`${attr[0]}: ${attr[1]}`}</p>
-      {/each}
-    </div>
-    {/each}
-  {/if}
-  <button type="button" name="button" on:click={()=>{addPerson(example)}}>HI</button>
+  <Router {routes} />
 </main>
+<style global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+  main{
+    @apply bg-gray-700 h-screen text-red-400
+  }
+  .red-border{
+    @apply p-4 border-2 border-red-400 rounded-lg;
+  }
+</style>
