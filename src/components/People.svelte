@@ -12,6 +12,6 @@
 </div>
 <style >
   div{
-    @apply grid grid-cols-2 place-items-stretch p-6 gap-2;
+    @apply grid grid-cols-2 place-items-stretch p-2 gap-2;
   }
 </style>
