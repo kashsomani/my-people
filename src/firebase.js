@@ -20,4 +20,7 @@ export async function getPeople() {
   const snapshot = await firebase.firestore().collection('people').get()
   return snapshot.docs.map(doc => Object.entries(doc.data()));
 }
+export async function addPerson(person) {
+  const res = await db.collection('people').add(person);
+}
 export const db = firebase.firestore();

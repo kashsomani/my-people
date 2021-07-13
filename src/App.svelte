@@ -4,24 +4,28 @@
   } from "svelte";
   import {
     db,
-    getPeople
+    getPeople,
+    addPerson
   } from './firebase';
+  const example ={name:"hi", age:903}
   $: people = [];
-  $: people2 = [];
   onMount(async () => {
-    people2 = await getPeople();
-    console.log(people2)
+    people = await getPeople();
+    console.log(people)
   })
+  async function addP(person){
+    await addPerson(person)
+  }
 </script>
 
 <main>
   <h1>MY PEEPS</h1>
 
 
-  {#if !people2}
+  {#if !people}
     <p>loading</p>
   {:else}
-    {#each people2 as person}
+    {#each people as person}
     <div >
       {#each person as attr}
         <p>{`${attr[0]}: ${attr[1]}`}</p>
@@ -29,4 +33,5 @@
     </div>
     {/each}
   {/if}
+  <button type="button" name="button" on:click={()=>{addPerson(example)}}>HI</button>
 </main>
