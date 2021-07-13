@@ -8,7 +8,9 @@
   } from '../firebase'
   import People from '../components/People.svelte'
   import Form from '../components/Form.svelte'
-  import {fade} from 'svelte/transition'
+  import {
+    fade
+  } from 'svelte/transition'
   const example = {
     name: "hi",
     age: 903
@@ -27,13 +29,13 @@
   {:else}
   <div transition:fade="{{duration:1500}}">
     <People {people}/>
-    <div transition:fade="{{duration:2000}}">
-      <button on:click={()=>{addPerson(example)}}>
-        HI
-      </button>
-    </div>
   </div>
   <Form/>
+  <div transition:fade="{{duration:2000}}">
+    <button on:click={()=>{addPerson(example)}}>
+      HI
+    </button>
+  </div>
   {/if}
 </div>
 <style >
