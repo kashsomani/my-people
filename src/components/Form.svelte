@@ -20,10 +20,10 @@
 </div>
 <style >
   input{
-    @apply bg-red-300 text-gray-800 p-2 border-2 rounded-lg border-transparent;
+    @apply bg-yellow-900 text-yellow-300 p-2 border-2 rounded-lg border-transparent;
   }
   input:focus{
     outline:none;
-    @apply border-red-500;
+    @apply border-yellow-500;
   }
 </style>

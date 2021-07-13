@@ -1,7 +1,7 @@
 <script>
   import {
     people_store
-  } from '../store'
+  } from '../people'
   let people = [];
   import {
     addPerson
