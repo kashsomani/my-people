@@ -3,24 +3,16 @@
     people_store
   } from '../people'
   let people = [];
-  import {
-    addPerson
-  } from '../firebase'
+
   import People from '../components/People.svelte'
   import Form from '../components/Form.svelte'
   import {
     fade
   } from 'svelte/transition'
-  const example = {
-    name: "hi",
-    age: 903
-  }
   people_store.subscribe(value => {
     people = value;
   });
-  async function addP(person) {
-    await addPerson(person)
-  }
+
 </script>
 <div>
   <h1>MY PEEPS</h1>
@@ -31,11 +23,6 @@
     <People {people}/>
   </div>
   <Form/>
-  <div transition:fade="{{duration:2000}}">
-    <button on:click={()=>{addPerson(example)}}>
-      HI
-    </button>
-  </div>
   {/if}
 </div>
 <style >
