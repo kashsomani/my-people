@@ -22,12 +22,20 @@ export async function getPeople() {
 	const snapshot = await firebase.firestore()
 		.collection( 'people' )
 		.get()
-	return snapshot.docs.map( doc => Object.entries( doc.data() ) );
+	return snapshot.docs.map( doc => {
+		let data = doc.data()
+		data.id = doc.id
+		return data
+	} );
 }
 export async function addPerson( person ) {
 	const res = await db.collection( 'people' )
 		.add( person );
 }
-
+export async function deletePerson( person ) {
+	const res = await db.collection( 'people' )
+		.doc( person )
+		.delete();
+}
 export const people = firebase.firestore()
 	.collection( 'people' );
