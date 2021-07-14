@@ -1,6 +1,7 @@
 // Add the Firebase products that you want to use
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth'
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
@@ -39,3 +40,17 @@ export async function deletePerson( person ) {
 }
 export const people = firebase.firestore()
 	.collection( 'people' );
+
+export async function signIn( email, password ) {
+	return await firebase.auth()
+		.signInWithEmailAndPassword( email, password )
+		.then( ( userCredential ) => {
+			// Signed in
+			var user = userCredential.user;
+			return user;
+		} )
+		.catch( ( error ) => {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+		} );
+}

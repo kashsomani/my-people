@@ -2,9 +2,13 @@
   import {
     onMount
   } from "svelte";
+  import 'firebase/auth'
+  import firebase from 'firebase/app'
   import {
     people,
-    getPeople
+    getPeople,
+    signIn,
+    authObserver
   } from './firebase';
   import {
     people_store
@@ -14,10 +18,25 @@
   async function get(){
     people_store.set(await getPeople());
   }
-  onMount(get)
+  $:logged_in  = false
+  $: observer = firebase.auth()
+		.onAuthStateChanged( async ( user ) => {
+			if ( user ) {
+				logged_in = true;
+			}
+      else{
+        logged_in = false;
+      }
+		} )
+
+  onMount(async ()=>{
+    let user = signIn("test@test.com","password");
+    get();
+ })
   people.onSnapshot(get)
 </script>
 <main class="text-primary">
+  {logged_in}
   <Router {routes} />
 </main>
 <style global>
