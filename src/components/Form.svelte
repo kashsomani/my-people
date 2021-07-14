@@ -13,7 +13,7 @@
   $:success = false
   async function addP(person) {
     if(Object.keys(person).length !== 0){
-      console.log(`${Object.entries(person).length}`)
+      console.log(`${Object.keys(person).length}`)
       error = false
       success = true
       await addPerson(person)
@@ -55,10 +55,9 @@
     {/if}
   </div>
 </div>
-<p>{`${JSON.stringify(person)}`}</p>
 <style >
   input{
-    @apply bg-blue-200 text-blue-300 p-2 border-2 rounded-lg border-transparent;
+    @apply bg-blue-200 text-black p-2 border-2 rounded-lg border-transparent;
   }
   input:focus{
     outline:none;
