@@ -3,6 +3,7 @@
     onMount
   } from "svelte";
   import {
+    people,
     getPeople
   } from './firebase';
   import {
@@ -14,6 +15,7 @@
     people_store.set(await getPeople());
   }
   onMount(get)
+  people.onSnapshot(get)
 </script>
 <main class="text-primary">
   <Router {routes} />
@@ -23,10 +25,10 @@
   @tailwind components;
   @tailwind utilities;
   main{
-    @apply bg-yellow-600 h-screen
+    @apply bg-blue-400 h-screen font-semibold;
   }
   .red-border{
-    @apply p-4 border-2 border-gray-700 rounded-lg;
+    @apply p-4 border-2 border-black rounded-lg;
   }
   .text-primary{
     @apply text-gray-800;
