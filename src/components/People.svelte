@@ -2,16 +2,22 @@
   export let people;
   import Person from './Person.svelte'
   import {fade} from 'svelte/transition'
-
+  import {deletePerson} from '../firebase'
 </script>
 
-<div >
+<div class="people">
   {#each people as person}
+  <div class="container red-border grid grid-cols-1">
     <Person {person}/>
+    <button on:click={()=>{deletePerson(person.id)}} class="border-2 red-border bg-red-700 font-extrabold">Delete</button>
+  </div>
   {/each}
 </div>
 <style >
-  div{
+  .people{
     @apply grid grid-cols-2 place-items-stretch p-2 gap-2;
+  }
+  .container{
+    @apply grid grid-cols-1 p-1 place-items-center;
   }
 </style>
