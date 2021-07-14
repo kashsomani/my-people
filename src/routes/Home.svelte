@@ -19,7 +19,7 @@
   {#if !people}
     <p>loading</p>
   {:else}
-  <div transition:fade="{{duration:1500}}">
+  <div on:fade="{{duration:1500}}">
     <People {people}/>
   </div>
   <Form/>

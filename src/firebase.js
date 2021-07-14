@@ -45,12 +45,22 @@ export async function signIn( email, password ) {
 	return await firebase.auth()
 		.signInWithEmailAndPassword( email, password )
 		.then( ( userCredential ) => {
-			// Signed in
 			var user = userCredential.user;
 			return user;
 		} )
 		.catch( ( error ) => {
 			var errorCode = error.code;
 			var errorMessage = error.message;
+			return false;
+		} );
+}
+export async function signOut() {
+	return await firebase.auth()
+		.signOut()
+		.then( () => {
+			return false
+		} )
+		.catch( ( error ) => {
+			return true;
 		} );
 }

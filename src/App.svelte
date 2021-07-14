@@ -1,49 +1,20 @@
 <script>
-  import {
-    onMount
-  } from "svelte";
-  import 'firebase/auth'
-  import firebase from 'firebase/app'
-  import {
-    people,
-    getPeople,
-    signIn
-  } from './firebase';
-  import {
-    people_store
-  } from './people'
-  import Router from 'svelte-spa-router'
-  import routes from './router'
-  async function get(){
-    people_store.set(await getPeople());
-  }
 
-  $:user = ""
-  $:password = ""
-
-  $:logged_in  = false
-  $: observer = firebase.auth()
-		.onAuthStateChanged( async ( user ) => {
-			if ( user ) {
-				logged_in = true;
-			}
-      else{
-        logged_in = false;
-      }
-		} )
-
-  onMount(async ()=>{
-    get();
- })
-  people.onSnapshot(get)
+  import Login from './components/Login.svelte'
+  import Layout from './components/Layout.svelte'
+  import {
+    logged_in_store
+  } from './logged_in'
+  let logged_in = false
+  logged_in_store.subscribe(value => {
+    logged_in = value;
+  });
 </script>
 <main class="text-primary">
   {#if logged_in}
-    <Router {routes} />
+    <Layout/>
   {:else}
-  <button on:click={()=>{
-    signIn("test@test.com","password");
-  }}>Login</button>
+    <Login/>
   {/if}
 
 </main>
