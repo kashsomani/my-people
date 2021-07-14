@@ -7,8 +7,7 @@
   import {
     people,
     getPeople,
-    signIn,
-    authObserver
+    signIn
   } from './firebase';
   import {
     people_store
@@ -18,6 +17,10 @@
   async function get(){
     people_store.set(await getPeople());
   }
+
+  $:user = ""
+  $:password = ""
+
   $:logged_in  = false
   $: observer = firebase.auth()
 		.onAuthStateChanged( async ( user ) => {
@@ -30,14 +33,19 @@
 		} )
 
   onMount(async ()=>{
-    let user = signIn("test@test.com","password");
     get();
  })
   people.onSnapshot(get)
 </script>
 <main class="text-primary">
-  {logged_in}
-  <Router {routes} />
+  {#if logged_in}
+    <Router {routes} />
+  {:else}
+  <button on:click={()=>{
+    signIn("test@test.com","password");
+  }}>Login</button>
+  {/if}
+
 </main>
 <style global>
   @tailwind base;
