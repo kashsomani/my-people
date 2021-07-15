@@ -5,13 +5,10 @@
   import {
     logged_in_store
   } from './logged_in'
-  /*
   let logged_in = false
   logged_in_store.subscribe(value => {
     logged_in = value;
   });
-  */
-  let logged_in = true
 </script>
 <main class="text-primary">
   <div class="background">
