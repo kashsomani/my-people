@@ -47,3 +47,9 @@
   <button on:click={signOutCheck}>Sign Out</button>
   <Router {routes} />
 </div>
+
+<style >
+  button{
+    @apply m-4 p-4 bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300;
+  }
+</style>

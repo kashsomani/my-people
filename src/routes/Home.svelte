@@ -15,11 +15,11 @@
 
 </script>
 <div>
-  <h1>MY PEEPS</h1>
+  <h1>My People</h1>
   {#if !people}
     <p>loading</p>
   {:else}
-  <div on:fade="{{duration:1500}}">
+  <div class="people-container" on:fade="{{duration:1500}}">
     <People {people}/>
   </div>
   <Form/>
@@ -31,5 +31,8 @@
   }
   div{
     @apply grid grid-cols-1 place-items-center;
+  }
+  .people-container{
+    @apply p-6
   }
 </style>
