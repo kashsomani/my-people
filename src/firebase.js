@@ -20,7 +20,7 @@ export const db = firebase.firestore();
 
 
 export async function getPeople() {
-	const snapshot = await firebase.firestore()
+	const snapshot = await db
 		.collection( 'people' )
 		.get()
 	return snapshot.docs.map( doc => {
@@ -38,8 +38,7 @@ export async function deletePerson( person ) {
 		.doc( person )
 		.delete();
 }
-export const people = firebase.firestore()
-	.collection( 'people' );
+export const people = db.collection( 'people' );
 
 export async function signIn( email, password ) {
 	return await firebase.auth()
