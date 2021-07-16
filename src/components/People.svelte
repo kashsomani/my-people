@@ -1,8 +1,12 @@
 <script>
   export let people;
   import Person from './Person.svelte'
-  import {fade} from 'svelte/transition'
-  import {deletePerson} from '../firebase'
+  import {
+    fade
+  } from 'svelte/transition'
+  import {
+    deletePerson
+  } from '../firebase'
 </script>
 
 <div class="people">

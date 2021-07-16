@@ -16,14 +16,14 @@
 
   let count = 0
   async function addP(temp_person) {
-    if (Object.keys(temp_person).length !== 0 ) {
+    if (Object.keys(temp_person).length !== 0) {
       await addPerson(temp_person)
       person = {}
       key_values.set([{
         key: "",
         id: Date.now(),
         value: "",
-        added:false
+        added: false
       }])
     } else {
       alert("addition cannot be empty")
@@ -48,10 +48,10 @@
           key: "",
           id: Date.now(),
           value: "",
-          added:false
+          added: false
         });
-        kv.map(e=>{
-          if(e.id===id){
+        kv.map(e => {
+          if (e.id === id) {
             e.added = true
           }
         })
@@ -67,17 +67,19 @@
     });
     delete person[key];
   }
-  function enterValue(event,key,id,value){
-    if(event.key==="Enter"){
-      addKey(key,id,value)
+
+  function enterValue(event, key, id, value) {
+    if (event.key === "Enter") {
+      addKey(key, id, value)
     }
   }
-  async function enterKey(event,key,id,value){
-    if(event.key==="Enter"){
+  async function enterKey(event, key, id, value) {
+    if (event.key === "Enter") {
       await addP(person)
     }
   }
-  function init(el){
+
+  function init(el) {
     el.focus()
   }
 </script>

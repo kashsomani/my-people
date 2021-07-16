@@ -14,52 +14,52 @@ const firebaseConfig = {
 	measurementId: "G-FRMJJVC9ZN"
 };
 
-firebase.initializeApp( firebaseConfig );
+firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.firestore();
 
 
 export async function getPeople() {
 	const snapshot = await db
-		.collection( 'people' )
+		.collection('people')
 		.get()
-	return snapshot.docs.map( doc => {
+	return snapshot.docs.map(doc => {
 		let data = doc.data()
 		data.id = doc.id
 		return data
-	} );
+	});
 }
-export async function addPerson( person ) {
-	const res = await db.collection( 'people' )
-		.add( person );
+export async function addPerson(person) {
+	const res = await db.collection('people')
+		.add(person);
 }
-export async function deletePerson( person ) {
-	const res = await db.collection( 'people' )
-		.doc( person )
+export async function deletePerson(person) {
+	const res = await db.collection('people')
+		.doc(person)
 		.delete();
 }
-export const people = db.collection( 'people' );
+export const people = db.collection('people');
 
-export async function signIn( email, password ) {
+export async function signIn(email, password) {
 	return await firebase.auth()
-		.signInWithEmailAndPassword( email, password )
-		.then( ( userCredential ) => {
+		.signInWithEmailAndPassword(email, password)
+		.then((userCredential) => {
 			var user = userCredential.user;
 			return user;
-		} )
-		.catch( ( error ) => {
+		})
+		.catch((error) => {
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			return false;
-		} );
+		});
 }
 export async function signOut() {
 	return await firebase.auth()
 		.signOut()
-		.then( () => {
+		.then(() => {
 			return false
-		} )
-		.catch( ( error ) => {
+		})
+		.catch((error) => {
 			return true;
-		} );
+		});
 }

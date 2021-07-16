@@ -1,7 +1,7 @@
 <script>
   export let person;
 </script>
-<div >
+<div>
   {#each Object.entries(person) as attr}
     <div class="grid grid-cols-4 gap-0">
       <div class="col-span-1 p-4"><p>{`${attr[0]}: `}</p></div>

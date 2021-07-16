@@ -1,22 +1,24 @@
 <script>
-  import {signIn} from '../firebase'
-  $:email =""
-  $:password = ""
+  import {
+    signIn
+  } from '../firebase'
+  $: email = ""
+  $: password = ""
   import {
     logged_in_store
   } from '../logged_in'
-  async function signInWithCheck(email,password){
-      let val = await signIn(email,password);
-      if (val){
-        logged_in_store.set(true)
-      }
-      else {
-        console.log(val)
-      }
+  async function signInWithCheck(email, password) {
+    let val = await signIn(email, password);
+    if (val) {
+      logged_in_store.set(true)
+    } else {
+      console.log(val)
+    }
   }
-  function enter(event){
-    if(event.key==="Enter"){
-      signInWithCheck(email,password)
+
+  function enter(event) {
+    if (event.key === "Enter") {
+      signInWithCheck(email, password)
     }
   }
 </script>
@@ -38,11 +40,12 @@
 </div>
 
 <style>
-  input{
-    outline:none;
+  input {
+    outline: none;
     @apply bg-transparent text-center;
   }
-  .container{
+
+  .container {
     @apply grid grid-cols-1 place-items-center;
   }
 </style>
