@@ -22,7 +22,9 @@
   <div class="people-container" on:fade="{{duration:1500}}">
     <People {people}/>
   </div>
-  <Form/>
+  <div class="form-container">
+    <Form/>
+  </div>
   {/if}
 </div>
 <style >
@@ -34,5 +36,8 @@
   }
   .people-container{
     @apply p-6
+  }
+  .form-container{
+    @apply p-8
   }
 </style>
