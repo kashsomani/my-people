@@ -18,38 +18,55 @@
     logged_in_store
   } from '../logged_in'
 
-  async function get(){
+  async function get() {
     people_store.set(await getPeople());
   }
 
-  $:logged_in  = false
+  $: logged_in = false
 
-  $:observer = firebase.auth()
-		.onAuthStateChanged( async ( user ) => {
-			if ( user ) {
-				logged_in = true;
-			}
-      else{
+  $: observer = firebase.auth()
+    .onAuthStateChanged(async (user) => {
+      if (user) {
+        logged_in = true;
+      } else {
         logged_in = false;
       }
-		} )
+    })
 
-  onMount(async ()=>{
+  onMount(async () => {
     get();
- })
+  })
   people.onSnapshot(get)
 
-  async function signOutCheck(){
+  async function signOutCheck() {
     logged_in_store.set(await signOut())
   }
 </script>
-<div >
-  <button on:click={signOutCheck}>Sign Out</button>
+<div>
+  <div class="grid grid-cols-12 place-items-center">
+    <div class="col-span-3 ">
+      <div class="grid grid-cols-1 place-items-center">
+        <button on:click={signOutCheck}>Sign Out</button>
+      </div>
+    </div>
+    <div class="col-span-6">
+      <div class="grid grid-cols-1 place-items-center">
+        <h1 class="heading">My People</h1>
+      </div>
+    </div>
+    <div class="col-span-3">
+    </div>
+  </div>
+
   <Router {routes} />
 </div>
 
-<style >
-  button{
+<style>
+  button {
     @apply m-4 p-4 bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300;
+  }
+
+  .heading {
+    @apply font-extrabold text-2xl text-black text-center;
   }
 </style>
