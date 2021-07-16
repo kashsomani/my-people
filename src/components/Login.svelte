@@ -16,15 +16,27 @@
   }
 </script>
 <div class="container">
-  <p class="p-2 text-center">email</p>
-  <input type="text" name="email" bind:value={email}>
-  <p class="p-2 text-center">password</p>
-  <input type="password" name="password" bind:value={password}>
-  <button on:click={()=>{signInWithCheck(email,password)}}>Login</button>
+  <p class="p-2 text-center">EMAIL</p>
+  <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
+    <input type="text" name="email" bind:value={email}>
+  </div>
+  <p class="p-2 text-center">PASSWORD</p>
+  <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
+    <input type="password" name="password" bind:value={password} >
+  </div>
+
+  <div class="p-4 bg-blue-300 rounded rounded-full m-2">
+    <button on:click={()=>{signInWithCheck(email,password)}}>LOGIN</button>
+  </div>
+
 
 </div>
 
 <style>
+  input{
+    outline:none;
+    @apply bg-transparent text-center;
+  }
   .container{
     @apply grid grid-cols-1 place-items-center;
   }

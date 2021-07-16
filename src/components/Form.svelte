@@ -35,7 +35,9 @@
     {#each inputs as field}
     <div >
       <p class="p-2 text-center">{`${field.charAt(0).toUpperCase() + field.slice(1)}`}</p>
-      <input type="text" name="{field}" bind:value={person[field]}>
+      <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
+        <input type="text" name="{field}" bind:value={person[field]}>
+      </div>
     </div>
     {/each}
   </div>
@@ -47,13 +49,13 @@
 </div>
 <style >
   input{
-    @apply bg-blue-200 text-black p-2 border-2 border-transparent;
-  }
-  input:focus{
     outline:none;
-    @apply border-blue-900;
+    @apply bg-transparent text-center;
   }
   .form{
     @apply rounded rounded-lg shadow-2xl ;
+  }
+  button{
+    @apply mt-4 p-4 bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300;
   }
 </style>
