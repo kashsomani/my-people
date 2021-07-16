@@ -31,7 +31,7 @@
     @apply font-semibold grid grid-cols-1 place-items-center pb-2;
   }
   .red-border{
-    @apply p-4 border-2 border-black rounded-lg;
+    @apply p-2 border-2 border-black rounded-lg;
   }
   .text-primary{
     @apply text-gray-800;
