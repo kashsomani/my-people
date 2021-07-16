@@ -1,48 +1,105 @@
 <script>
-  import {fade} from 'svelte/transition'
+  import {
+    fade
+  } from 'svelte/transition'
   import {
     addPerson
   } from '../firebase'
-  const inputs = [
-    "name",
-    "age",
-    "job",
-    "phone"
-  ];
+  import {
+    key_values
+  } from '../stores/key_values'
 
+  let keys = []
+  key_values.subscribe(value => {
+    keys = value
+    console.log(keys)
+  });
+
+  let count = 0
   async function addP(temp_person) {
-     if(Object.keys(temp_person).length !== 0){
+    if (Object.keys(temp_person).length !== 0 ) {
       console.log(`${Object.entries(temp_person).length}`)
       await addPerson(temp_person)
       person = {}
-    }
-    else {
+      key_values.set([{
+        key: "",
+        id: Date.now(),
+        value: "",
+        added:false
+      }])
+    } else {
       alert("addition cannot be empty")
     }
   }
-  $:person = {}
-  $:clean= (()=>{
-    for(let i in person){
-      if(!person[i]){
+  $: person = {}
+  $: clean = (() => {
+    for (let i in person) {
+      if (!person[i]) {
         delete person[i]
       }
     }
   })()
+
+  function addKey(key, id, value) {
+    if (!key || !value) {
+      console.log(key)
+      console.log(value)
+      alert("invalid key / value")
+    } else {
+      person[key] = value
+      key_values.update(kv => {
+        kv.push({
+          key: "",
+          id: Date.now(),
+          value: "",
+          added:false
+        });
+        kv.map(e=>{
+          if(e.id===id){
+            e.added = true
+          }
+        })
+        return kv
+      })
+
+    }
+  }
+
+  function deleteKey(key, id) {
+    key_values.update(kv => {
+      return kv.filter(v => v.id !== id);
+    });
+    delete person[key];
+  }
 </script>
 
 <div class="red-border form" transition:fade="{{duration:1000}}">
-  <div class="grid grid-cols-1">
-    {#each inputs as field}
-    <div >
-      <p class="p-2 text-center">{`${field.charAt(0).toUpperCase() + field.slice(1)}`}</p>
-      <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
-        <input type="text" name="{field}" bind:value={person[field]}>
+  {#each keys as {key,id,value,added} (id)}
+    <div class="grid grid-cols-12 place-items-center gap-1">
+      <div class="p-4 bg-blue-300 rounded rounded-full col-span-2 m-0">
+        <input type="text" name="{key}" bind:value={key}>
       </div>
+      <div class="p-4 bg-blue-300 rounded rounded-full col-span-8 ">
+        <input type="text" name="{value}" bind:value={value} class="flex flex-auto">
+      </div>
+      {#if !added}
+      <div class="col-span-1 m-auto">
+        <button on:click={()=>{addKey(key,id,value);}} class=" plus-button">
+          +
+        </button>
+      </div>
+      {/if}
+      {#if added}
+      <div class="col-span-1 m-auto">
+        <button on:click={()=>{deleteKey(key,id);}} class="x-button">
+          x
+        </button>
+      </div>
+      {/if}
     </div>
-    {/each}
-  </div>
+  {/each}
   <div transition:fade="{{duration:2000}}" class="grid grid-cols-1 place-items-center">
-    <button on:click={async ()=>{await addP(person);}}>
+    <button on:click={async ()=>{await addP(person);}} class="add-button">
       ADD
     </button>
   </div>
@@ -53,9 +110,15 @@
     @apply bg-transparent text-center;
   }
   .form{
-    @apply rounded rounded-lg shadow-2xl ;
+    @apply rounded grid grid-cols-1 rounded-lg shadow-2xl m-4 ;
   }
-  button{
+  .add-button{
     @apply mt-4 p-4 bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300;
+  }
+  .plus-button{
+    @apply bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300
+  }
+  .x-button{
+    @apply bg-red-600 rounded-full rounded-lg shadow-2xl text-blue-300
   }
 </style>
