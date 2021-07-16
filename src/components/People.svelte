@@ -22,6 +22,6 @@
     @apply grid grid-cols-2 place-items-stretch p-2 gap-2;
   }
   .person{
-    @apply grid grid-cols-1 p-1 place-items-center rounded rounded-lg shadow-2xl ;
+    @apply grid grid-cols-1 p-1 place-items-center rounded rounded-lg shadow-2xl bg-blue-400;
   }
 </style>

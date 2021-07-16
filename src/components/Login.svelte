@@ -23,17 +23,17 @@
   }
 </script>
 <div class="container">
-  <p class="p-2 text-center">EMAIL</p>
+  <p class="p-2 text-center font-extrabold">EMAIL</p>
   <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
     <input type="text" name="email" bind:value={email} on:keydown={enter}>
   </div>
-  <p class="p-2 text-center">PASSWORD</p>
+  <p class="p-2 text-center font-extrabold">PASSWORD</p>
   <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
     <input type="password" name="password" bind:value={password} on:keydown={enter}>
   </div>
 
   <div class="p-4 bg-blue-300 rounded rounded-full m-2">
-    <button on:click={()=>{signInWithCheck(email,password)}}>LOGIN</button>
+    <button on:click={()=>{signInWithCheck(email,password)}} class="login-button">LOGIN</button>
   </div>
 
 
@@ -47,5 +47,8 @@
 
   .container {
     @apply grid grid-cols-1 place-items-center;
+  }
+  .login-button{
+    @apply font-extrabold text-lg;
   }
 </style>
