@@ -12,7 +12,6 @@
 </script>
 <main class="text-primary">
   <div class="background">
-
   </div>
   {#if logged_in}
     <Layout/>
@@ -29,7 +28,7 @@
     @apply fixed bg-blue-400 inset-0 ;
   }
   main{
-    @apply font-semibold;
+    @apply font-semibold grid grid-cols-1 place-items-center;
   }
   .red-border{
     @apply p-4 border-2 border-black rounded-lg;
