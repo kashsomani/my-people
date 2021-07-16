@@ -12,13 +12,11 @@
   let keys = []
   key_values.subscribe(value => {
     keys = value
-    console.log(keys)
   });
 
   let count = 0
   async function addP(temp_person) {
     if (Object.keys(temp_person).length !== 0 ) {
-      console.log(`${Object.entries(temp_person).length}`)
       await addPerson(temp_person)
       person = {}
       key_values.set([{
@@ -42,8 +40,6 @@
 
   function addKey(key, id, value) {
     if (!key || !value) {
-      console.log(key)
-      console.log(value)
       alert("invalid key / value")
     } else {
       person[key] = value
@@ -71,10 +67,18 @@
     });
     delete person[key];
   }
-  function onKeydown(event,key,id,value){
+  function enterValue(event,key,id,value){
     if(event.key==="Enter"){
       addKey(key,id,value)
     }
+  }
+  async function enterKey(event,key,id,value){
+    if(event.key==="Enter"){
+      await addP(person)
+    }
+  }
+  function init(el){
+    el.focus()
   }
 </script>
 
@@ -82,10 +86,14 @@
   {#each keys as {key,id,value,added} (id)}
     <div class="grid grid-cols-12 place-items-center gap-1 m-auto p-4">
       <div class="col-span-2 p-4 bg-blue-300 rounded rounded-full grid grid-cols-1 place-items-center">
-        <input type="text" name="{key}" bind:value={key}>
+        {#if !added}
+        <input type="text" name="{key}" bind:value={key} use:init on:keydown={(event)=>{enterKey(event,key,id,value)}}>
+        {:else}
+        <input type="text" name="{key}" bind:value={key} on:keydown={(event)=>{enterKey(event,key,id,value)}}>
+        {/if}
       </div>
       <div class="col-span-9 p-4 bg-blue-300 rounded rounded-full grid grid-cols-1 place-items-center">
-        <input type="text" name="{value}" bind:value={value} on:keydown={(event)=>{onKeydown(event,key,id,value)}}>
+        <input type="text" name="{value}" bind:value={value} on:keydown={(event)=>{enterValue(event,key,id,value)}}>
       </div>
       {#if !added}
         <div class="col-span-1 m-auto ">
