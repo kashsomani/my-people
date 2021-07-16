@@ -71,30 +71,35 @@
     });
     delete person[key];
   }
+  function onKeydown(event,key,id,value){
+    if(event.key==="Enter"){
+      addKey(key,id,value)
+    }
+  }
 </script>
 
 <div class="red-border form" transition:fade="{{duration:1000}}">
   {#each keys as {key,id,value,added} (id)}
-    <div class="grid grid-cols-12 place-items-center gap-1">
-      <div class="p-4 bg-blue-300 rounded rounded-full col-span-2 m-0">
+    <div class="grid grid-cols-12 place-items-center gap-1 m-auto p-4">
+      <div class="col-span-2 p-4 bg-blue-300 rounded rounded-full grid grid-cols-1 place-items-center">
         <input type="text" name="{key}" bind:value={key}>
       </div>
-      <div class="p-4 bg-blue-300 rounded rounded-full col-span-8 ">
-        <input type="text" name="{value}" bind:value={value} class="flex flex-auto">
+      <div class="col-span-9 p-4 bg-blue-300 rounded rounded-full grid grid-cols-1 place-items-center">
+        <input type="text" name="{value}" bind:value={value} on:keydown={(event)=>{onKeydown(event,key,id,value)}}>
       </div>
       {#if !added}
-      <div class="col-span-1 m-auto">
-        <button on:click={()=>{addKey(key,id,value);}} class=" plus-button">
-          +
-        </button>
-      </div>
+        <div class="col-span-1 m-auto ">
+          <button on:click={()=>{addKey(key,id,value);}} class=" plus-button">
+            +
+          </button>
+        </div>
       {/if}
       {#if added}
-      <div class="col-span-1 m-auto">
-        <button on:click={()=>{deleteKey(key,id);}} class="x-button">
-          x
-        </button>
-      </div>
+        <div class="col-span-1 m-auto">
+          <button on:click={()=>{deleteKey(key,id);}} class="x-button">
+            x
+          </button>
+        </div>
       {/if}
     </div>
   {/each}
@@ -110,15 +115,15 @@
     @apply bg-transparent text-center;
   }
   .form{
-    @apply rounded grid grid-cols-1 rounded-lg shadow-2xl m-4 ;
+    @apply rounded grid grid-cols-1 rounded-lg shadow-2xl m-6 mb-4 ;
   }
   .add-button{
     @apply mt-4 p-4 bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300;
   }
   .plus-button{
-    @apply bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300
+    @apply bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300 p-4;
   }
   .x-button{
-    @apply bg-red-600 rounded-full rounded-lg shadow-2xl text-blue-300
+    @apply bg-red-600 rounded-full rounded-lg shadow-2xl text-blue-300 p-4
   }
 </style>
