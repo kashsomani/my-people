@@ -12,10 +12,8 @@
   people_store.subscribe(value => {
     people = value;
   });
-
 </script>
 <div>
-  <h1>My People</h1>
   {#if !people}
     <p>loading</p>
   {:else}
