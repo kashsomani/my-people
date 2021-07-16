@@ -9,7 +9,7 @@
   {#each people as person}
   <div class="person red-border grid grid-cols-1">
     <Person {person}/>
-    <button on:click={()=>{deletePerson(person.id)}} class="border-2 red-border bg-red-700 font-extrabold">Delete</button>
+    <button on:click={()=>{deletePerson(person.id)}} class="bg-red-600 rounded-full rounded-lg shadow-2xl text-blue-300 p-4 font-extrabold">Delete</button>
   </div>
   {/each}
 </div>
