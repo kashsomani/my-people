@@ -24,15 +24,15 @@
 </script>
 <div class="container">
   <p class="p-2 text-center font-extrabold">EMAIL</p>
-  <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
+  <div class="p-4 dark-background rounded rounded-full m-2 shadow-xl">
     <input type="text" name="email" bind:value={email} on:keydown={enter}>
   </div>
   <p class="p-2 text-center font-extrabold">PASSWORD</p>
-  <div class="p-4 bg-blue-300 rounded rounded-full m-2 ">
+  <div class="p-4 dark-background rounded rounded-full m-2 shadow-xl">
     <input type="password" name="password" bind:value={password} on:keydown={enter}>
   </div>
 
-  <div class="p-4 bg-blue-300 rounded rounded-full m-2">
+  <div class="p-6 dark-background rounded rounded-full m-2 shadow-xl text-dark">
     <button on:click={()=>{signInWithCheck(email,password)}} class="login-button">LOGIN</button>
   </div>
 
@@ -40,6 +40,7 @@
 </div>
 
 <style>
+
   input {
     outline: none;
     @apply bg-transparent text-center;

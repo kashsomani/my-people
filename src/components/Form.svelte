@@ -87,26 +87,26 @@
 <div class="red-border form" transition:fade="{{duration:1000}}">
   {#each keys as {key,id,value,added} (id)}
     <div class="grid grid-cols-12 place-items-center gap-1 m-auto p-4">
-      <div class="col-span-2 p-4 bg-blue-300 rounded rounded-full grid grid-cols-1 place-items-center">
+      <div class="col-span-2 p-4 dark-background rounded rounded-full grid grid-cols-1 place-items-center">
         {#if !added}
         <input type="text" name="{key}" bind:value={key} use:init on:keydown={(event)=>{enterKey(event,key,id,value)}}>
         {:else}
         <input type="text" name="{key}" bind:value={key} on:keydown={(event)=>{enterKey(event,key,id,value)}}>
         {/if}
       </div>
-      <div class="col-span-9 p-4 bg-blue-300 rounded rounded-full grid grid-cols-1 place-items-center">
+      <div class="col-span-9 p-4 dark-background rounded rounded-full grid grid-cols-1 place-items-center">
         <input type="text" name="{value}" bind:value={value} on:keydown={(event)=>{enterValue(event,key,id,value)}}>
       </div>
       {#if !added}
         <div class="col-span-1 m-auto ">
-          <button on:click={()=>{addKey(key,id,value);}} class=" plus-button">
+          <button on:click={()=>{addKey(key,id,value);}} class=" plus-button button-background">
             +
           </button>
         </div>
       {/if}
       {#if added}
         <div class="col-span-1 m-auto">
-          <button on:click={()=>{deleteKey(key,id);}} class="x-button">
+          <button on:click={()=>{deleteKey(key,id);}} class="x-button button-background">
             x
           </button>
         </div>
@@ -114,7 +114,7 @@
     </div>
   {/each}
   <div transition:fade="{{duration:2000}}" class="grid grid-cols-1 place-items-center">
-    <button on:click={async ()=>{await addP(person);}} class="add-button">
+    <button on:click={async ()=>{await addP(person);}} class="add-button button-background">
       ADD
     </button>
   </div>
@@ -128,12 +128,12 @@
     @apply rounded grid grid-cols-1 rounded-lg shadow-2xl m-6 mb-4 ;
   }
   .add-button{
-    @apply mt-4 p-4 bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300;
+    @apply mt-4 p-4 rounded-full rounded-lg shadow-2xl ;
   }
   .plus-button{
-    @apply bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300 p-4;
+    @apply rounded-full rounded-lg shadow-2xl  p-4;
   }
   .x-button{
-    @apply bg-red-600 rounded-full rounded-lg shadow-2xl text-blue-300 p-4
+    @apply bg-red-600 rounded-full rounded-lg shadow-2xl  p-4
   }
 </style>

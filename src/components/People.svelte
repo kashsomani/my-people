@@ -13,15 +13,17 @@
   {#each people as person}
   <div class="person red-border grid grid-cols-1">
     <Person {person}/>
-    <button on:click={()=>{deletePerson(person.id)}} class="bg-red-600 rounded-full rounded-lg shadow-2xl text-blue-300 p-4 font-extrabold">Delete</button>
+    <button on:click={()=>{deletePerson(person.id)}} class="rounded-full rounded-lg shadow-2xl p-4 font-extrabold button-background">Delete</button>
   </div>
   {/each}
 </div>
 <style >
+
   .people{
-    @apply grid grid-cols-2 place-items-stretch p-2 gap-2;
+    @apply grid grid-cols-1 md:grid-cols-2 place-items-stretch p-2 gap-2;
   }
   .person{
-    @apply grid grid-cols-1 p-1 place-items-center rounded rounded-lg shadow-2xl bg-blue-400;
+    background-color:#008080;
+    @apply grid grid-cols-1 p-1 place-items-center rounded rounded-lg shadow-2xl;
   }
 </style>

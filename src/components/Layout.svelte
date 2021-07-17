@@ -46,27 +46,26 @@
   <div class="grid grid-cols-12 place-items-center">
     <div class="col-span-3 ">
       <div class="grid grid-cols-1 place-items-center">
-        <button on:click={signOutCheck}>Sign Out</button>
+        <button on:click={signOutCheck} class="button-background">Sign Out</button>
       </div>
     </div>
     <div class="col-span-6">
       <div class="grid grid-cols-1 place-items-center">
-        <h1 class="heading">My People</h1>
+        <h1 class="heading text-primary">My People</h1>
       </div>
     </div>
     <div class="col-span-3">
     </div>
   </div>
-
   <Router {routes} />
 </div>
 
 <style>
   button {
-    @apply m-4 p-4 bg-gray-700 rounded-full rounded-lg shadow-2xl text-blue-300;
+    @apply m-4 p-4 rounded-full rounded-lg shadow-2xl ;
   }
 
   .heading {
-    @apply font-extrabold text-2xl text-black text-center;
+    @apply font-extrabold text-2xl text-center;
   }
 </style>

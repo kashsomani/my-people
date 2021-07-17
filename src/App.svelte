@@ -22,24 +22,38 @@
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+  .dark-background{
+    background-color:#00cdcd;
+  }
+  .light-background{
+    background-color:#00b3b3;
+  }
+  .text-dark{
+    color:
+    #008080;
+  }
+  .button-background{
+    background-color:#003434;
+  }
   .background{
     z-index:-1;
-    @apply fixed bg-blue-400 inset-0 ;
+    background-color:#006767;
+    @apply fixed inset-0 ;
   }
   main{
-    @apply font-semibold grid grid-cols-1 place-items-center pb-2;
+    @apply font-semibold grid grid-cols-1 place-items-center pb-2 ;
   }
   .red-border{
     @apply p-2 border-2 border-black rounded-lg;
   }
   .text-primary{
-    @apply text-gray-800;
+    color:#00ffff;
   }
   input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active  {
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active  {
   background:transparent;
-  -webkit-box-shadow: 0 0 0 30px #93C5FD inset !important;
+  -webkit-box-shadow: 0 0 0 30px #00cdcd inset !important;
 }
 </style>
