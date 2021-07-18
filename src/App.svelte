@@ -37,7 +37,7 @@
   }
   .background{
     z-index:-1;
-    background-color:#006767;
+    background-color:#06acac;
     @apply fixed inset-0 ;
   }
   main{
@@ -50,10 +50,10 @@
     color:#00ffff;
   }
   input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active  {
-  background:transparent;
-  -webkit-box-shadow: 0 0 0 30px #00cdcd inset !important;
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #00ffff !important;
 }
 </style>
