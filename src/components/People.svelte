@@ -13,7 +13,7 @@
   {#each people as person}
   <div class="person grid grid-cols-1 ">
     <Person {person}/>
-    <button on:click={()=>{deletePerson(person.id)}} class="p-4 font-extrabold delete-button">Delete</button>
+    <button on:click={()=>{deletePerson(person.id)}} class="p-6 font-extrabold delete-button">X</button>
   </div>
   {/each}
 </div>
