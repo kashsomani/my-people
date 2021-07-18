@@ -46,7 +46,7 @@
   <div class="grid grid-cols-12 place-items-center">
     <div class="col-span-3 ">
       <div class="grid grid-cols-1 place-items-center">
-        <button on:click={signOutCheck} class="button-background">Sign Out</button>
+        <button on:click={signOutCheck}>Sign Out</button>
       </div>
     </div>
     <div class="col-span-6">
@@ -61,8 +61,13 @@
 </div>
 
 <style>
+
   button {
-    @apply m-4 p-4 rounded-full rounded-lg shadow-2xl ;
+    border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+            inset -18px -18px 42px #08d9d9;
+    @apply m-4 p-4 font-extrabold;
   }
 
   .heading {
