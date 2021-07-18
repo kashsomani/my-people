@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="col-span-6">
-      <div class="grid grid-cols-1 place-items-center">
+      <div class="grid grid-cols-1 place-items-center heading-container">
         <h1 class="heading text-primary">My People</h1>
       </div>
     </div>
@@ -69,7 +69,13 @@ box-shadow: inset 18px 18px 42px #047f7f,
             inset -18px -18px 42px #08d9d9;
     @apply m-4 p-4 font-extrabold;
   }
-
+.heading-container{
+  border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+            inset -18px -18px 42px #08d9d9;
+            @apply p-6;
+}
   .heading {
     @apply font-extrabold text-2xl text-center;
   }
