@@ -64,16 +64,16 @@
 
   button {
     border-radius: 70px;
-background: #06acac;
-box-shadow: inset 18px 18px 42px #047f7f,
-            inset -18px -18px 42px #08d9d9;
+    background: #06acac;
+    box-shadow:  18px 18px 42px #047f7f,
+             -18px -18px 42px #08d9d9;
     @apply m-4 p-4 font-extrabold;
   }
 .heading-container{
   border-radius: 70px;
 background: #06acac;
-box-shadow: inset 18px 18px 42px #047f7f,
-            inset -18px -18px 42px #08d9d9;
+box-shadow:  18px 18px 42px #047f7f,
+           -18px -18px 42px #08d9d9;
             @apply p-6;
 }
   .heading {

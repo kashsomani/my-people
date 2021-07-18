@@ -84,17 +84,17 @@
   }
 </script>
 
-<div class="red-border form" transition:fade="{{duration:1000}}">
+<div class="container form" transition:fade="{{duration:1000}}">
   {#each keys as {key,id,value,added} (id)}
-    <div class="grid grid-cols-12 place-items-center gap-1 m-auto p-4">
-      <div class="col-span-2 p-4 dark-background rounded rounded-full grid grid-cols-1 place-items-center">
+    <div class="grid grid-cols-12 place-items-center gap-0 m-2 p-4">
+      <div class="col-span-4  input-container">
         {#if !added}
         <input type="text" name="{key}" bind:value={key} use:init on:keydown={(event)=>{enterKey(event,key,id,value)}}>
         {:else}
         <input type="text" name="{key}" bind:value={key} on:keydown={(event)=>{enterKey(event,key,id,value)}}>
         {/if}
       </div>
-      <div class="col-span-9 p-4 dark-background rounded rounded-full grid grid-cols-1 place-items-center">
+      <div class="col-span-7  input-container ">
         <input type="text" name="{value}" bind:value={value} on:keydown={(event)=>{enterValue(event,key,id,value)}}>
       </div>
       {#if !added}
@@ -120,6 +120,13 @@
   </div>
 </div>
 <style >
+  .input-container{
+    border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+            inset -18px -18px 42px #08d9d9;
+            @apply p-4 grid grid-cols-1 place-items-center;
+  }
   input{
     outline:none;
     @apply bg-transparent text-center;
@@ -128,12 +135,30 @@
     @apply rounded grid grid-cols-1 rounded-lg shadow-2xl m-6 mb-4 ;
   }
   .add-button{
-    @apply mt-4 p-4 rounded-full rounded-lg shadow-2xl ;
+    border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+            inset -18px -18px 42px #08d9d9;
+    @apply m-4 p-4 font-extrabold;
   }
   .plus-button{
-    @apply rounded-full rounded-lg shadow-2xl  p-4;
+    border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+            inset -18px -18px 42px #08d9d9;
+    @apply  p-4 font-extrabold;
   }
   .x-button{
-    @apply bg-red-600 rounded-full rounded-lg shadow-2xl  p-4
+    border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+            inset -18px -18px 42px #08d9d9;
+    @apply  p-4 font-extrabold;
+  }
+  .container{
+    border-radius: 70px;
+background: #06acac;
+box-shadow:  18px 18px 42px #047f7f,
+             -18px -18px 42px #08d9d9;
   }
 </style>
