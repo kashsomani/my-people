@@ -42,6 +42,9 @@
   }
   main{
     @apply font-semibold grid grid-cols-1 place-items-center pb-2 ;
+    font-weight:600;
+    display:grid;
+    padding-bottom:2
   }
   .red-border{
     @apply p-2 border-2 border-black rounded-lg;
