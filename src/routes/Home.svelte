@@ -27,15 +27,15 @@
 </div>
 <style >
   h1{
-    @apply text-2xl
+    @apply text-2xl;
   }
   div{
     @apply grid grid-cols-1 place-items-center;
   }
   .people-container{
-    @apply p-6
+    @apply p-6;
   }
   .form-container{
-    @apply p-8
+    @apply p-8;
   }
 </style>

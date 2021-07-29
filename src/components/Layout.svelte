@@ -46,11 +46,11 @@
   <div class="grid grid-cols-12 place-items-center">
     <div class="col-span-3 ">
       <div class="grid grid-cols-1 place-items-center">
-        <button on:click={signOutCheck}>Sign Out</button>
+        <button class="embossed-button" on:click={signOutCheck}>Sign Out</button>
       </div>
     </div>
     <div class="col-span-6">
-      <div class="grid grid-cols-1 place-items-center heading-container">
+      <div class="grid grid-cols-1 place-items-center embossed p-6">
         <h1 class="heading text-primary">My People</h1>
       </div>
     </div>
@@ -62,20 +62,6 @@
 
 <style>
 
-  button {
-    border-radius: 70px;
-    background: #06acac;
-    box-shadow:  18px 18px 42px #047f7f,
-             -18px -18px 42px #08d9d9;
-    @apply m-4 p-4 font-extrabold;
-  }
-.heading-container{
-  border-radius: 70px;
-background: #06acac;
-box-shadow:  18px 18px 42px #047f7f,
-           -18px -18px 42px #08d9d9;
-            @apply p-6;
-}
   .heading {
     @apply font-extrabold text-2xl text-center;
   }

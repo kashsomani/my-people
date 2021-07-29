@@ -12,12 +12,11 @@
 
 <style>
   .container{
-    @apply m-8;
+    @apply m-8 font-semibold;
   }
   div{
-
     white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 </style>

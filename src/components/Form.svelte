@@ -84,29 +84,29 @@
   }
 </script>
 
-<div class="container form" transition:fade="{{duration:1000}}">
+<div class="embossed form" transition:fade="{{duration:1000}}">
   {#each keys as {key,id,value,added} (id)}
     <div class="grid grid-cols-1 md:grid-cols-12 place-items-center gap-0 m-2 p-4">
-      <div class="md:col-span-4  input-container">
+      <div class="md:col-span-4  input-container mb-3">
         {#if !added}
         <input type="text" name="{key}" bind:value={key} use:init on:keydown={(event)=>{enterKey(event,key,id,value)}}>
         {:else}
         <input type="text" name="{key}" bind:value={key} on:keydown={(event)=>{enterKey(event,key,id,value)}}>
         {/if}
       </div>
-      <div class="md:col-span-7  input-container ">
+      <div class="md:col-span-7  input-container mb-3 ">
         <input type="text" name="{value}" bind:value={value} on:keydown={(event)=>{enterValue(event,key,id,value)}}>
       </div>
       {#if !added}
         <div class="md:col-span-1 m-auto ">
-          <button on:click={()=>{addKey(key,id,value);}} class=" plus-button button-background">
+          <button on:click={()=>{addKey(key,id,value);}} class=" depressed-button button-background">
             +
           </button>
         </div>
       {/if}
       {#if added}
         <div class="col-span-1 m-auto">
-          <button on:click={()=>{deleteKey(key,id);}} class="x-button button-background">
+          <button on:click={()=>{deleteKey(key,id);}} class="depressed-button button-background">
             x
           </button>
         </div>
@@ -114,51 +114,13 @@
     </div>
   {/each}
   <div transition:fade="{{duration:2000}}" class="grid grid-cols-1 place-items-center">
-    <button on:click={async ()=>{await addP(person);}} class="add-button button-background">
+    <button on:click={async ()=>{await addP(person);}} class="depressed-button button-background">
       ADD
     </button>
   </div>
 </div>
 <style >
-  .input-container{
-    border-radius: 70px;
-background: #06acac;
-box-shadow: inset 18px 18px 42px #047f7f,
-            inset -18px -18px 42px #08d9d9;
-            @apply p-4 grid grid-cols-1 place-items-center m-2;
-  }
-  input{
-    outline:none;
-    @apply bg-transparent text-center;
-  }
   .form{
-    @apply rounded grid grid-cols-1 rounded-lg shadow-2xl m-6 mb-4 ;
-  }
-  .add-button{
-    border-radius: 70px;
-background: #06acac;
-box-shadow: inset 18px 18px 42px #047f7f,
-            inset -18px -18px 42px #08d9d9;
-    @apply m-4 p-4 font-extrabold;
-  }
-  .plus-button{
-    border-radius: 70px;
-background: #06acac;
-box-shadow: inset 18px 18px 42px #047f7f,
-            inset -18px -18px 42px #08d9d9;
-    @apply  p-4 font-extrabold;
-  }
-  .x-button{
-    border-radius: 70px;
-background: #06acac;
-box-shadow: inset 18px 18px 42px #047f7f,
-            inset -18px -18px 42px #08d9d9;
-    @apply  p-4 font-extrabold;
-  }
-  .container{
-    border-radius: 70px;
-background: #06acac;
-box-shadow:  18px 18px 42px #047f7f,
-             -18px -18px 42px #08d9d9;
+    @apply grid grid-cols-1 m-6 mb-4 ;
   }
 </style>

@@ -52,11 +52,42 @@
   .text-primary{
     color:#00ffff;
   }
+  .input-container{
+    border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+            inset -18px -18px 42px #08d9d9;
+    @apply p-4 ;
+  }
+  .embossed{
+    border-radius: 70px;
+background: #06acac;
+box-shadow:  18px 18px 42px #047f7f,
+             -18px -18px 42px #08d9d9;
+  }
+  input {
+    outline: none;
+    @apply bg-transparent text-center;
+  }
   input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
   transition: background-color 5000s;
   -webkit-text-fill-color: #00ffff !important;
+}
+.depressed-button{
+  border-radius: 70px;
+background: #06acac;
+box-shadow: inset 18px 18px 42px #047f7f,
+          inset -18px -18px 42px #08d9d9;
+  @apply m-4 p-4 font-extrabold;
+}
+.embossed-button {
+  border-radius: 70px;
+  background: #06acac;
+  box-shadow:  18px 18px 42px #047f7f,
+           -18px -18px 42px #08d9d9;
+  @apply m-4 p-4 font-extrabold;
 }
 </style>
