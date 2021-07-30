@@ -1,6 +1,7 @@
 <script>
   export let person;
 </script>
+
 <div class="container">
   {#each Object.entries(person) as attr}
     <div class="grid grid-cols-4 gap-0">
@@ -10,11 +11,11 @@
   {/each}
 </div>
 
-<style>
-  .container{
+<style lang="postcss">
+  .container {
     @apply m-8 font-semibold;
   }
-  div{
+  div {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

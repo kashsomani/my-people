@@ -1,5 +1,5 @@
-import Home from '../routes/Home.svelte'
+import Home from "../routes/Home.svelte";
 const routes = {
-	'/': Home
-}
-export default routes
+  "/": Home,
+};
+export default routes;
