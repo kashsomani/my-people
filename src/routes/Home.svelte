@@ -23,7 +23,7 @@
   {/if}
 </div>
 
-<style>
+<style lang="postcss">
   h1 {
     @apply text-2xl;
   }
